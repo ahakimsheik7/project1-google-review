@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internal Feedback Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #202124;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    textarea, input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1558b0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>We'd love your feedback</h2>
+    <form action="https://formsubmit.co/youremail@example.com" method="POST">
+      <input type="hidden" name="_subject" value="New Internal Feedback" />
+      <input type="hidden" name="Rating" id="ratingField" value="" />
+      
+      <label for="feedback">What could we improve?</label>
+      <textarea name="feedback" id="feedback" rows="4" required></textarea>
+
+      <label for="name">Your Name (optional)</label>
+      <input type="text" name="name" id="name" />
+
+      <label for="email">Your Email (optional)</label>
+      <input type="email" name="email" id="email" />
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const rating = params.get('rating');
+    if (rating) {
+      document.getElementById('ratingField').value = rating;
+    }
+  </script>
+</body>
+</html>
